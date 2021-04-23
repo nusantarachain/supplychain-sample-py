@@ -1,0 +1,129 @@
+{
+    "runtime_id": 2,
+    "types": {
+        "Address": "MultiAddress",
+        "LookupSource": "MultiAddress",
+        "OrgId": "AccountId",
+        "Organization": {
+          "type": "struct",
+          "type_mapping": [
+                ["id", "AccountId"],
+                ["name", "Vec<u8>"],
+                ["description", "Vec<u8>"],
+                ["admin", "AccountId"],
+                ["website", "Vec<u8>"],
+                ["email", "Vec<u8>"],
+                ["suspended", "bool"]
+            ]
+        },
+        "CertId": "[u8; 32]",
+        "IssuedId": "Vec<u8>",
+        "CertDetail": {
+            "type": "struct",
+            "type_mapping": [
+                ["name", "Vec<u8>"],
+                ["description", "Vec<u8>"],
+                ["org_id", "AccountId"],
+                ["signer_name", "Vec<u8>"]
+            ]
+        },
+        "CertProof": {
+            "type": "struct",
+            "type_mapping": [
+                ["cert_id", "CertId"],
+                ["human_id", "Vec<u8>"],
+                ["recipient", "Vec<u8>"],
+                ["time", "Moment"],
+                ["expired", "Moment"],
+                ["revoked", "bool"],
+                ["additional_data", "Option<Vec<u8>>"]
+            ]
+        },
+        "Year": "u32",
+        "PropName": "Vec<u8>",
+        "PropValue": "Vec<u8>",
+        "ProductProperty": {
+            "type": "struct",
+            "type_mapping": [
+                ["name", "PropName"],
+                ["value", "PropValue"]
+            ]
+        },
+        "ProductId": "Vec<u8>",
+        "Product": {
+            "type": "struct",
+            "type_mapping": [
+                ["id","ProductId"],
+                ["owner","AccountId"],
+                ["props","Option<Vec<ProductProperty>>"],
+                ["registered","Moment"]
+            ]
+        },
+        "Identifier": "Vec<u8>",
+        "Decimal": "i32",
+        "TrackingId": "Identifier",
+        "TrackingEventIndex": "u128",
+        "DeviceId": "Identifier",
+        "TrackingStatus": "Vec<u8>",
+        "Track": {
+            "type": "struct",
+            "type_mapping": [
+                ["id","TrackingId"],
+                ["owner","AccountId"],
+                ["status","TrackingStatus"],
+                ["products","Vec<ProductId>"],
+                ["registered","Moment"],
+                ["updated","Option<Moment>"]
+            ]
+        },
+        "TrackingEventType": {
+            "type": "enum",
+            "type_mapping": [
+                ["TrackingRegistration", "Null"],
+                ["TrackingUpdateStatus", "Null"],
+                ["TrackingScan", "Null"],
+                ["TrackingDeliver", "Null"]
+            ]
+        },
+        "TrackingEvent": {
+            "type": "struct",
+            "type_mapping": [
+                ["event_type", "TrackingEventType"],
+                ["tracking_id", "TrackingId"],
+                ["location", "Option<ReadPoint>"],
+                ["readings", "Vec<Reading<Moment>>"],
+                ["status", "TrackingStatus"],
+                ["timestamp", "Moment"]
+            ]
+        },
+        "ReadPoint": {
+            "type": "struct",
+            "type_mapping": [
+                ["latitude", "Decimal"],
+                ["longitude", "Decimal"]
+            ]
+        },
+        "ReadingType": {
+            "type": "enum",
+            "type_mapping": [
+                "Humidity",
+                "Pressure",
+                "Shock",
+                "Tilt",
+                "Temperature",
+                "Vibration"
+            ]
+        },
+        "Reading": {
+            "type": "struct",
+            "type_mapping": [
+                ["device_id", "DeviceId"],
+                ["reading_type", "ReadingType"],
+                ["timestamp", "Moment"],
+                ["value", "Decimal"]
+            ]
+        }
+    },
+    "versioning": [
+    ]
+  }
