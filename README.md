@@ -2,11 +2,11 @@ Contoh kode demo implementasi rantai pasok (supply chain) di Nuchain.
 
 ## Dokumentasi
 
-Untuk dokumentasi silahkan baca [Nuchain Wiki](https://wiki.nuchain.network/docs/build/build-supply-chain)
+Untuk dokumentasi silahkan baca [Nuchain Docs](https://nuchain.network/docs/build/supply-chain)
 
 Gambaran alur kerja:
 
-![nuchain supply chain](https://wiki.nuchain.network/assets/images/nuchain-supply-chain-c95c544c0357d8018cf71db9da92c868.png)
+![nuchain supply chain](https://nuchain.network/assets/images/nuchain-supply-chain-c95c544c0357d8018cf71db9da92c868.png)
 
 
 ## Demo
