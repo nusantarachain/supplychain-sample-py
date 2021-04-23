@@ -1,4 +1,4 @@
-Contoh implementasi rantai pasok (supply chain) di Nuchain.
+Contoh kode demo implementasi rantai pasok (supply chain) di Nuchain.
 
 ## Demo
 
