@@ -13,7 +13,8 @@
                 ["admin", "AccountId"],
                 ["website", "Vec<u8>"],
                 ["email", "Vec<u8>"],
-                ["suspended", "bool"]
+                ["suspended", "bool"],
+                ["props", "Option<Vec<Property>>"]
             ]
         },
         "CertId": "[u8; 32]",

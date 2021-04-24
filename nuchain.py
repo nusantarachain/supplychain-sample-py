@@ -48,7 +48,7 @@ def submit_extrinsic(extrinsic):
         print("Failed to send: {}".format(e))
 
 
-def create_organization(name, description, admin, website="", email="", account=None):
+def create_organization(name, description, admin, website="", email="", props=[], account=None):
 
     call = conn.compose_call(
         call_module="Organization",
@@ -58,7 +58,8 @@ def create_organization(name, description, admin, website="", email="", account=
             "description": description,
             "admin": admin,
             "website": website,
-            "email": email
+            "email": email,
+            "props": props
         }
     )
     extrinsic = conn.create_signed_extrinsic(call=call, keypair=account)
@@ -167,4 +168,5 @@ def grant_access(org_id, to_account, valid_for=None, account=None):
     )
     extrinsic = conn.create_signed_extrinsic(call=call, keypair=account)
     receipt = submit_extrinsic(extrinsic)
+    return receipt
 
