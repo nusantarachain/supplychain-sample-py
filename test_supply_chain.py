@@ -53,7 +53,7 @@ def main():
     nuchain.update_status(tracking_id, "dimasak", int(time.time() * 1000), location=location, account=BOB)
 
     # Update status tracking (lagi) dengan akun orang lain (Charlie)
-    # harusnya gagal, arena Charlie tidak memiliki akses dari organisasi
+    # harusnya gagal, karena Charlie tidak memiliki akses dari organisasi
     print("\033[93m4. CHARLIE UPDATE STATUS...\033[0m")
     nuchain.update_status(tracking_id, "dikemas", int(time.time() * 1000), account=CHARLIE)
 
