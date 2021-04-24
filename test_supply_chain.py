@@ -55,7 +55,7 @@ def main():
     # Update status tracking (lagi) dengan akun orang lain (Charlie)
     # harusnya gagal, arena Charlie tidak memiliki akses dari organisasi
     print("\033[93m4. CHARLIE UPDATE STATUS...\033[0m")
-    nuchain.update_status(tracking_id, "dipacking", int(time.time() * 1000), account=CHARLIE)
+    nuchain.update_status(tracking_id, "dikemas", int(time.time() * 1000), account=CHARLIE)
 
     # 5. Berikan akses ke Charlie 
     print("\033[93m5. GRANT ACCESS KE CHARLIE...\033[0m")
@@ -63,7 +63,7 @@ def main():
 
     # 6. Sekarang Charlie harusnya bisa update status tracking
     print("\033[93m6. CHARLIE UPDATE STATUS...\033[0m")
-    nuchain.update_status(tracking_id, "dipacking", int(time.time() * 1000), account=CHARLIE)
+    nuchain.update_status(tracking_id, "dikemas", int(time.time() * 1000), account=CHARLIE)
 
     # 7. Tampilkan semua events pada suatu tracking
     print("\033[93m7. TRACING...\033[0m")

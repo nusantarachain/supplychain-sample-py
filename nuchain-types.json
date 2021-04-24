@@ -42,7 +42,7 @@
         "Year": "u32",
         "PropName": "Vec<u8>",
         "PropValue": "Vec<u8>",
-        "ProductProperty": {
+        "Property": {
             "type": "struct",
             "type_mapping": [
                 ["name", "PropName"],
@@ -55,7 +55,7 @@
             "type_mapping": [
                 ["id","ProductId"],
                 ["owner","AccountId"],
-                ["props","Option<Vec<ProductProperty>>"],
+                ["props","Option<Vec<Property>>"],
                 ["registered","Moment"]
             ]
         },
@@ -73,7 +73,9 @@
                 ["status","TrackingStatus"],
                 ["products","Vec<ProductId>"],
                 ["registered","Moment"],
-                ["updated","Option<Moment>"]
+                ["updated","Option<Moment>"],
+                ["parent_id", "TrackingId"],
+                ["props", "Option<Vec<Property>>"]
             ]
         },
         "TrackingEventType": {

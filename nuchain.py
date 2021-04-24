@@ -104,7 +104,7 @@ def register_product(product_id, org_id, year, props=[], account=None):
             print("+ Product registered:", event.params[1]['value'])
 
 
-def create_tracking(tracking_id, org_id, year, products=[], account=None):
+def create_tracking(tracking_id, org_id, year, products=[], parent_id=None, props=None, account=None):
     """Buatkan tracking untuk produk"""
     call = conn.compose_call(
         call_module="ProductTracking",
@@ -113,7 +113,9 @@ def create_tracking(tracking_id, org_id, year, products=[], account=None):
             "id": tracking_id,
             "org_id": org_id,
             "year": year,
-            "products": products
+            "products": products,
+            "parent_id": parent_id,
+            "props": props
         }
     )
     extrinsic = conn.create_signed_extrinsic(call=call, keypair=account)
