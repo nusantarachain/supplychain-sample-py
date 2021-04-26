@@ -144,13 +144,14 @@ def update_status(tracking_id, status, timestamp, location=None, readings=None, 
     extrinsic = conn.create_signed_extrinsic(call=call, keypair=account)
     receipt = submit_extrinsic(extrinsic)
 
-    for event in receipt.triggered_events:
-        if event.event_module.name == "ProductTracking" and event.event.name == "TrackingStatusUpdated":
-            if event.event.name == "TrackingStatusUpdated":
-                params = event.params
-                print(" [i] got tracking event: `{}` {}".format(params[1]['value'], params[3]['value']))
-        # else:
-        #     print(event)
+    if receipt is not None:
+        for event in receipt.triggered_events:
+            if event.event_module.name == "ProductTracking" and event.event.name == "TrackingStatusUpdated":
+                if event.event.name == "TrackingStatusUpdated":
+                    params = event.params
+                    print(" [i] got tracking event: `{}` {}".format(params[1]['value'], params[3]['value']))
+            # else:
+            #     print(event)
 
 def grant_access(org_id, to_account, valid_for=None, account=None):
     """Grant access ke akun melalui Decentralized Identifiers (DIDs) module

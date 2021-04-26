@@ -15,9 +15,10 @@ YEAR = "2021"
 
 def main():
 
-    nuchain.connect("ws://127.0.0.1:9944")
+    nuchain.connect("wss://testnet.nuchain.riset.tech")
+    # nuchain.connect("ws://127.0.0.1:9944")
 
-    tracking_id = "kopi-bowongso-paket-01"
+    tracking_id = "kopi-bowongso-paket-02"
 
     # # account_info = conn.query('System', 'Account', params=[keypair.ss58_address])
     # # print("account info:", account_info)
@@ -29,7 +30,7 @@ def main():
         "value": "SKH-RI/2021/I33T"
     }]
     org_id = nuchain.create_organization(
-        "SEEDS", "Lorem Ipsum", BOB.ss58_address, props=props, account=ALICE)
+        "MyOrganization", "Lorem Ipsum", BOB.ss58_address, props=props, account=ALICE)
 
     # # dapatkan informasi organisasi dari modul `Organization` storage `Organizations`.
     # org = nuchain.conn.query('Organization', 'Organizations', params=[org_id])
@@ -56,7 +57,7 @@ def main():
         time.time() * 1000), account=BOB)
 
     # Update status tracking (lagi)
-    location = {"latitude": -7.7195894, "longitude": 110.3519251}
+    location = {"latitude": "-7.7195894", "longitude": "110.3519251"}
     nuchain.update_status(tracking_id, "dimasak", int(
         time.time() * 1000), location=location, account=BOB)
 
