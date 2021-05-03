@@ -8,6 +8,37 @@ Gambaran alur kerja:
 
 ![nuchain supply chain](https://nuchain.network/assets/images/nuchain-supply-chain-c95c544c0357d8018cf71db9da92c868.png)
 
+Cara menjalankan demonya:
+
+```
+python test_supply_chain.py
+```
+
+Secara default perintah tersebut akan menjalankan script untuk jaringan Testnet.
+Apabila ingin mencobanya di node local bisa menjalankan perintah seperti berikut:
+
+```
+NUCHAIN_HOST=ws://127.0.0.1:9944 python test_supply_chain.py
+```
+
+Pastikan node lokal sudah jalan dengan perintah:
+
+```
+nuchain --dev --tmp
+```
+
+### Penjelasan
+
+Kode ini akan mendemonstrasikan alur kerja rantai pasok sebagai berikut:
+
+1. Membuat organisasi
+2. Organisasi mendaftarkan produk
+3. Organisasi mendaftarkan tracking berisi produk yg dibuat di poin 2.
+4. Bob sebagai admin organisasi melakukan update status pada tracking yang dibuat di poin 3.
+5. Charlie coba melakukan update status, tetapi gagal karena tidak memiliki akses.
+6. Bob sebagai admin organisasi memberikan akses kepada Charlie.
+7. Charlie coba melakukan update status dan berhasil.
+8. Melakukan tracing.
 
 ## Demo
 
@@ -36,13 +67,13 @@ module: Organization, event: OrganizationAdded
    🔖 'f403e...8cc67' included in block #6
      SUKSES
  [i] got tracking event: `kopi-bowongso-paket-01` dimasak
-4. CHARLIE UPDATE STATUS...
+5. CHARLIE UPDATE STATUS...
    🔖 '2a28f...6ab53' included in block #7
      GAGAL
-5. GRANT ACCESS KE CHARLIE...
+6. GRANT ACCESS KE CHARLIE...
    🔖 '5faf3...3d189' included in block #8
      SUKSES
-6. CHARLIE UPDATE STATUS...
+7. CHARLIE UPDATE STATUS...
    🔖 '6c532...2cc2d' included in block #9
      SUKSES
  [i] got tracking event: `kopi-bowongso-paket-01` dipacking

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import os
+
 from substrateinterface import Keypair
 import nuchain
 import time
@@ -15,8 +17,13 @@ YEAR = "2021"
 
 def main():
 
-    nuchain.connect("wss://testnet.nuchain.riset.tech")
-    # nuchain.connect("ws://127.0.0.1:9944")
+    # default connect to Testnet
+    # for localhost please set NUCHAIN_HOST env var to ws://127.0.0.1:9944
+    host = os.environ.get("NUCHAIN_HOST", "wss://testnet.nuchain.riset.tech")
+
+    print("Connecting", host)
+
+    nuchain.connect(host)
 
     tracking_id = "kopi-bowongso-paket-02"
 
@@ -63,21 +70,21 @@ def main():
 
     # Update status tracking (lagi) dengan akun orang lain (Charlie)
     # harusnya gagal, karena Charlie tidak memiliki akses dari organisasi
-    print("\033[93m4. CHARLIE UPDATE STATUS...\033[0m")
+    print("\033[93m5. CHARLIE UPDATE STATUS...\033[0m")
     nuchain.update_status(tracking_id, "dikemas", int(
         time.time() * 1000), account=CHARLIE)
 
     # 5. Berikan akses ke Charlie
-    print("\033[93m5. GRANT ACCESS KE CHARLIE...\033[0m")
+    print("\033[93m6. GRANT ACCESS KE CHARLIE...\033[0m")
     nuchain.grant_access(org_id, CHARLIE.ss58_address, account=BOB)
 
     # 6. Sekarang Charlie harusnya bisa update status tracking
-    print("\033[93m6. CHARLIE UPDATE STATUS...\033[0m")
+    print("\033[93m7. CHARLIE UPDATE STATUS...\033[0m")
     nuchain.update_status(tracking_id, "dikemas", int(
         time.time() * 1000), account=CHARLIE)
 
     # 7. Tampilkan semua events pada suatu tracking
-    print("\033[93m7. TRACING...\033[0m")
+    print("\033[93m8. TRACING...\033[0m")
     resp = nuchain.conn.query(
         'ProductTracking', 'EventsOfTracking', params=[tracking_id])
     events = [nuchain.conn.query('ProductTracking', 'AllEvents', params=[

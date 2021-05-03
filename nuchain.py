@@ -128,7 +128,7 @@ def create_tracking(tracking_id, org_id, year, products=[], parent_id=None, prop
         # else:
         #     print(event)
 
-def update_status(tracking_id, status, timestamp, location=None, readings=None, account=None):
+def update_status(tracking_id, status, timestamp, location=None, readings=None, props=None, account=None):
     """Update status tracking"""
     call = conn.compose_call(
         call_module="ProductTracking",
@@ -138,7 +138,8 @@ def update_status(tracking_id, status, timestamp, location=None, readings=None, 
             "status": status,
             "timestamp": timestamp,
             "location": location,
-            "readings": readings
+            "readings": readings,
+            "props": props
         }
     )
     extrinsic = conn.create_signed_extrinsic(call=call, keypair=account)
